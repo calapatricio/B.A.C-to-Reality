@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">B.A.C. to Reality</string>
+    <string name="bebidas_alcoholicas">Bebidas alcohólicas</string>
+    <string name="gramos_por_litro">g/L en sangre actual</string>
+    <string name="miligramos_por_litro_aire">mg/L en aire expirado actual</string>
+    <string name="bac">BAC actual</string>
+    <string name="calcular">Calcular</string>
+</resources>

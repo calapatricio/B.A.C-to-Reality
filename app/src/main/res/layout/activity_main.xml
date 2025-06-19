@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewAlcoholicDrinks"
+        android:layout_width="match_parent"
+        tools:background ="@color/teal_700"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textAlcoholicDrinks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bebidas_alcoholicas"
+            app:layout_constraintStart_toStartOf="@id/viewAlcoholicDrinks"
+            app:layout_constraintEnd_toEndOf="@id/viewAlcoholicDrinks"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerAlcoholicDrinks"
+            android:layout_width="380dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/viewAlcoholicDrinks"
+            app:layout_constraintEnd_toEndOf="@id/viewAlcoholicDrinks"
+            app:layout_constraintTop_toBottomOf="@+id/textAlcoholicDrinks">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="@string/calcular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerAlcoholicDrinks"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewResults"
+        android:layout_width="match_parent"
+        tools:background ="@color/purple_200"
+        android:layout_height="331dp"
+        app:layout_constraintTop_toBottomOf="@id/viewAlcoholicDrinks"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/textGramsPerLitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gramos_por_litro"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
+            app:layout_constraintTop_toTopOf="@id/resultGramsPerLitre"
+            app:layout_constraintBottom_toBottomOf="@id/resultGramsPerLitre" />
+
+        <TextView
+            android:id="@+id/resultGramsPerLitre"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:visibility="visible"
+            android:text="0.25 g/L"
+            app:layout_constraintStart_toEndOf="@id/guidelineCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/textMiligramsPerLitreOfAir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/miligramos_por_litro_aire"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
+            app:layout_constraintTop_toTopOf="@id/resultMiligramsPerLitreOfAir"
+            app:layout_constraintBottom_toBottomOf="@id/resultMiligramsPerLitreOfAir" />
+
+        <TextView
+            android:id="@+id/resultMiligramsPerLitreOfAir"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:visibility="visible"
+            android:text="0.25 mg/L"
+            app:layout_constraintStart_toEndOf="@id/guidelineCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultGramsPerLitre"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/textBAC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bac"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
+            app:layout_constraintTop_toTopOf="@id/resultBAC"
+            app:layout_constraintBottom_toBottomOf="@id/resultBAC"
+            />
+
+        <TextView
+            android:id="@+id/resultBAC"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:visibility="visible"
+            android:text="0.025%"
+            app:layout_constraintStart_toEndOf="@id/guidelineCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultMiligramsPerLitreOfAir"
+            android:layout_marginTop="10dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
