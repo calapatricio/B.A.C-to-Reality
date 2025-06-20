@@ -41,6 +41,10 @@ class SeleccionBebidaModalFragment (
             dismiss()
         }
 
+        adapter.setOnDeleteClickListener {
+            bebida -> mostrarDialogoConfirmacion(bebida)
+        }
+
         return view
     }
 
@@ -49,6 +53,18 @@ class SeleccionBebidaModalFragment (
             lista -> bebidasList = lista
             adapter.actualizarLista(bebidasList)
         }
+    }
+
+    private fun mostrarDialogoConfirmacion(bebida: Bebida) {
+        val context = requireContext()
+        androidx.appcompat.app.AlertDialog.Builder(context)
+            .setTitle("¿Eliminar bebida?")
+            .setMessage("¿Estás seguro de que quieres eliminar \"${bebida.nombre}\"?")
+            .setPositiveButton("Eliminar") {_, _ ->
+                bebidaViewModel.deleteBebida(bebida)
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
     }
 
 }

@@ -4,21 +4,28 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class BebidasAdapter (private var bebidas: List<Bebida>) : RecyclerView.Adapter<BebidasAdapter.BebidaViewHolder>() {
 
     private var onItemClickListener: ((Bebida) -> Unit)? = null
+    private var onDeleteClickListener: ((Bebida) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (Bebida) -> Unit) {
         onItemClickListener = listener
+    }
+
+    fun setOnDeleteClickListener(listener: (Bebida) -> Unit) {
+        onDeleteClickListener = listener
     }
 
     inner class BebidaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nombreTextView: TextView = itemView.findViewById(R.id.textNombreBebida)
         val volumenTextView: TextView = itemView.findViewById(R.id.textVolumen)
         val graduacionTextView: TextView = itemView.findViewById(R.id.textGraduacionAlcohol)
+        val eliminarBebidaButton: ImageButton = itemView.findViewById(R.id.buttonEliminarBebida)
 
         init {
             itemView.setOnClickListener {
@@ -38,6 +45,10 @@ class BebidasAdapter (private var bebidas: List<Bebida>) : RecyclerView.Adapter<
         holder.nombreTextView.text = bebida.nombre
         holder.volumenTextView.text = "${bebida.volumenML} ml"
         holder.graduacionTextView.text = "${bebida.graduacionAlcohol} %"
+
+        holder.eliminarBebidaButton.setOnClickListener {
+            onDeleteClickListener?.invoke(bebida)
+        }
     }
 
     override fun getItemCount(): Int = bebidas.size

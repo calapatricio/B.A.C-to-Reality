@@ -47,7 +47,8 @@ class MainActivity : AppCompatActivity() {
 
         val listener = object : SeleccionBebidaModalFragment.OnBebidaSeleccionadaListener {
             override fun onBebidaSeleccionada(bebida: Bebida) {
-                bebidaViewModel.insertBebida(bebida)
+                listaBebidas.add(bebida)
+                adapter.actualizarLista(listaBebidas)
             }
 
             override fun onCrearNuevaBebida() {
