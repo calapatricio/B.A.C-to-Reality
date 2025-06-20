@@ -17,4 +17,8 @@
     <string name="porcentaje">%</string>
     <string name="proporcion_alcohol">Proporción Alcohol/Mezcla</string>
     <string name="explicacion_proporcion_alcohol">Proporción de alcohol en la bebida aproximado\nEj: 20% vodka y 80% refresco → 0.2\nSi no hay mezcla (cerveza, vino…) → 1.0</string>
+    <string name="item_nombre_bebida">Nombre de la bebida</string>
+    <string name="item_volumen">500 ml</string>
+    <string name="item_graduacion_alcohol">40%</string>
+    <string name="modal_crear_bebida">Crear nueva bebida</string>
 </resources>

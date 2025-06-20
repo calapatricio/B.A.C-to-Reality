@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 class BebidaViewModelFactory(private val repository: BebidaRepository) : ViewModelProvider.Factory {
+    @Suppress("UNCHEKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(BebidaViewModel::class.java)) {
             return BebidaViewModel(repository) as T
