@@ -5,4 +5,13 @@
     <string name="miligramos_por_litro_aire">mg/L en aire expirado actual</string>
     <string name="bac">BAC actual</string>
     <string name="calcular">Calcular</string>
+    <string name="crear_bebida">Crear Bebida</string>
+    <string name="nombre_bebida">Nombre de la bebida</string>
+    <string name="volumen">Volumen (ml)</string>
+    <string name="mililitros">ml</string>
+    <string name="graduacion_alcohol">Graduación de alcohol</string>
+    <string name="explicacion_graduacion_alcohol">Introduce el % de la bebida: 4.6%, 12%, 40%…</string>
+    <string name="porcentaje">%</string>
+    <string name="proporcion_alcohol">Proporción Alcohol/Mezcla</string>
+    <string name="explicacion_proporcion_alcohol">Proporción de alcohol en la bebida aproximado\nEj: 20% vodka y 80% refresco → 0.2\nSi no hay mezcla (cerveza, vino…) → 1.0</string>
 </resources>

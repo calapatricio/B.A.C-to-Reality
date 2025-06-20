@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange_2">
+
+    <TextView
+        android:id="@+id/textCrearBebida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/crear_bebida"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/textNombreBebida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nombre_bebida"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textCrearBebida"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editNombreBebida"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textNombreBebida"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/textVolumen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/volumen"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editNombreBebida"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editVolumen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textVolumen"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/textMililitros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mililitros"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/editVolumen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/editVolumen"
+        app:layout_constraintBottom_toBottomOf="@id/editVolumen"/>
+
+    <TextView
+        android:id="@+id/textGraduacionAlcohol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/graduacion_alcohol"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editVolumen"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/textExplicacionGraduacionAlcohol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/explicacion_graduacion_alcohol"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textGraduacionAlcohol"
+        android:layout_marginTop="4dp"/>
+
+    <EditText
+        android:id="@+id/editGraduacionAlcohol"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textExplicacionGraduacionAlcohol"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/textPorcentaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/porcentaje"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/editGraduacionAlcohol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/editGraduacionAlcohol"
+        app:layout_constraintBottom_toBottomOf="@id/editGraduacionAlcohol"/>
+
+    <TextView
+        android:id="@+id/textProprocionAlcohol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/proporcion_alcohol"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editGraduacionAlcohol"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/textExplicacionProprocionAlcohol"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/explicacion_proporcion_alcohol"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textProprocionAlcohol"
+        android:layout_marginTop="8dp"/>
+
+    <EditText
+        android:id="@+id/editProporcionAlcohol"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textExplicacionProprocionAlcohol"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/buttonCrearBebida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/crear_bebida"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editProporcionAlcohol"
+        android:layout_marginTop="16dp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
