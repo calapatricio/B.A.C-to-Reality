@@ -39,12 +39,6 @@ class MainActivity : AppCompatActivity() {
         val viewModelFactory = BebidaViewModelFactory(repository)
         bebidaViewModel = ViewModelProvider(this, viewModelFactory).get(BebidaViewModel::class.java)
 
-        bebidaViewModel.bebidas.observe(this) {
-            lista -> listaBebidas.clear()
-            listaBebidas.addAll(lista)
-            adapter.actualizarLista(listaBebidas)
-        }
-
         val listener = object : SeleccionBebidaModalFragment.OnBebidaSeleccionadaListener {
             override fun onBebidaSeleccionada(bebida: Bebida) {
                 listaBebidas.add(bebida)
