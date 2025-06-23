@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import org.w3c.dom.Text
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +20,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonCalcular: Button
     private lateinit var editHorasPrimeraBebida : EditText
     private lateinit var editMinutosPrimeraBebida : EditText
+    private lateinit var resultGramosPorLitro : TextView
+    private lateinit var resultMiligramosPorLitroDeAire: TextView
+    private lateinit var resultBAC : TextView
     private lateinit var bebidaViewModel: BebidaViewModel
     private lateinit var adapter: BebidasAdapter
     private val listaBebidas = mutableListOf<Bebida>()
@@ -26,9 +32,18 @@ class MainActivity : AppCompatActivity() {
 
         buttonAgregarBebida = findViewById(R.id.buttonAgregarBebida)
         recyclerBebidasAlcoholicas = findViewById(R.id.recyclerBebidasAlcoholicas)
+        buttonCalcular = findViewById(R.id.buttonCalcular)
         editHorasPrimeraBebida = findViewById(R.id.editHorasPrimeraBebida)
         editMinutosPrimeraBebida = findViewById(R.id.editMinutosPrimeraBebida)
-        buttonCalcular = findViewById(R.id.buttonCalcular)
+        resultGramosPorLitro = findViewById(R.id.resultGramosPorLitro)
+        resultMiligramosPorLitroDeAire = findViewById(R.id.resultMiligramosPorLitroDeAire)
+        resultBAC = findViewById(R.id.resultBAC)
+
+        val gramosPorDefecto = 0.0
+        resultGramosPorLitro.text = String.format(Locale.US, "%.2f g/L", gramosPorDefecto)
+        resultMiligramosPorLitroDeAire.text = String.format(Locale.US, "%.2f mg/L", gramosPorDefecto)
+        resultBAC.text = String.format(Locale.US, "%.3f %%", gramosPorDefecto)
+
 
         adapter = BebidasAdapter(listaBebidas)
         recyclerBebidasAlcoholicas.layoutManager = LinearLayoutManager(this)
@@ -58,7 +73,37 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonCalcular.setOnClickListener {
-            TODO("Calcular los g/L, mg/L y BAC de cada alcohol individualmente, sumarlo todo y restar 0.1 x ((hora * 60 + minutos) / 60) al total ")
+            val peso = 59.0
+            val factorGenero = 0.68 //0.55 en mujeres
+            val tasaEliminacion = 0.1 //Entre 0.1 y 0.2
+
+            val horasTexto = editHorasPrimeraBebida.text.toString().filter { it.isDigit() }
+            val minutosTexto = editMinutosPrimeraBebida.text.toString().filter { it.isDigit() }
+
+            val horas = horasTexto.toIntOrNull() ?: 0
+            val minutos = minutosTexto.toIntOrNull() ?:0
+            val tiempoHoras = horas.toDouble() + (minutos.toDouble() / 60)
+
+            var gramosTotales = 0.0
+            val gramosPorML = 0.789
+            val graduacionDecimal = 0.01
+            for (bebida in listaBebidas) {
+                val gramos = bebida.volumenML * (bebida.graduacionAlcohol * graduacionDecimal) * bebida.proporcionAlcohol * gramosPorML
+                gramosTotales += gramos
+            }
+
+            val factorAlcoholEnAireExpirado = 2
+            val coeficienteBAC = 0.1
+
+            val gramosPorLitroInicial = (gramosTotales / (peso * factorGenero))
+            val gramosPorLitroFinal = (gramosPorLitroInicial - (tasaEliminacion * tiempoHoras)).coerceAtLeast(0.0)
+            val mgPorLitro = gramosPorLitroFinal * factorAlcoholEnAireExpirado
+            val bac = gramosPorLitroFinal * coeficienteBAC
+
+            resultGramosPorLitro.text = String.format(Locale.US, "%.2f g/L", gramosPorLitroFinal)
+            resultMiligramosPorLitroDeAire.text = String.format(Locale.US, "%.2f mg/L", mgPorLitro)
+            resultBAC.text = String.format(Locale.US, "%.3f %%", bac)
+
         }
     }
 }
