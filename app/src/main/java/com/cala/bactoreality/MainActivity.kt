@@ -3,6 +3,7 @@ package com.cala.bactoreality
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var buttonAgregarBebida: FloatingActionButton
     private lateinit var recyclerBebidasAlcoholicas: RecyclerView
+    private lateinit var textSinBebidas: TextView
     private lateinit var buttonCalcular: Button
     private lateinit var editHorasPrimeraBebida : EditText
     private lateinit var editMinutosPrimeraBebida : EditText
@@ -26,12 +28,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bebidaViewModel: BebidaViewModel
     private lateinit var adapter: BebidasAdapter
     private val listaBebidas = mutableListOf<Bebida>()
+    private val gramosPorDefecto = 0.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         buttonAgregarBebida = findViewById(R.id.buttonAgregarBebida)
         recyclerBebidasAlcoholicas = findViewById(R.id.recyclerBebidasAlcoholicas)
+        textSinBebidas = findViewById(R.id.textSinBebidas)
         buttonCalcular = findViewById(R.id.buttonCalcular)
         editHorasPrimeraBebida = findViewById(R.id.editHorasPrimeraBebida)
         editMinutosPrimeraBebida = findViewById(R.id.editMinutosPrimeraBebida)
@@ -39,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         resultMiligramosPorLitroDeAire = findViewById(R.id.resultMiligramosPorLitroDeAire)
         resultBAC = findViewById(R.id.resultBAC)
 
-        val gramosPorDefecto = 0.0
         resultGramosPorLitro.text = String.format(Locale.US, "%.2f g/L", gramosPorDefecto)
         resultMiligramosPorLitroDeAire.text = String.format(Locale.US, "%.2f mg/L", gramosPorDefecto)
         resultBAC.text = String.format(Locale.US, "%.3f %%", gramosPorDefecto)
@@ -58,6 +62,7 @@ class MainActivity : AppCompatActivity() {
             override fun onBebidaSeleccionada(bebida: Bebida) {
                 listaBebidas.add(bebida)
                 adapter.actualizarLista(listaBebidas)
+                actualizarRecyclerView()
             }
 
             override fun onCrearNuevaBebida() {
@@ -70,6 +75,12 @@ class MainActivity : AppCompatActivity() {
         buttonAgregarBebida.setOnClickListener {
             val modalFragment = SeleccionBebidaModalFragment(listener, bebidaViewModel)
             modalFragment.show(supportFragmentManager, "SeleccionBebidaModalFragment")
+        }
+
+        adapter.setOnDeleteClickListener {
+            bebida -> listaBebidas.remove(bebida)
+            adapter.actualizarLista(listaBebidas)
+            actualizarRecyclerView()
         }
 
         buttonCalcular.setOnClickListener {
@@ -104,6 +115,16 @@ class MainActivity : AppCompatActivity() {
             resultMiligramosPorLitroDeAire.text = String.format(Locale.US, "%.2f mg/L", mgPorLitro)
             resultBAC.text = String.format(Locale.US, "%.3f %%", bac)
 
+        }
+    }
+
+    private fun actualizarRecyclerView() {
+        if(listaBebidas.isEmpty()) {
+            recyclerBebidasAlcoholicas.visibility = View.GONE
+            textSinBebidas.visibility = View.VISIBLE
+        } else {
+            recyclerBebidasAlcoholicas.visibility = View.VISIBLE
+            textSinBebidas.visibility = View.GONE
         }
     }
 }
