@@ -1,15 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="orange">#FFF08700</color>
-    <color name="orange_2">#FFF49F0A</color>
-    <color name="yellow">#FFEFCA08</color>
-    <color name="blue">#FF00A6A6</color>
-    <color name="candy_black">#FFBBDEF0</color>
+
+    <color name="Primary">#715289</color>
+    <color name="Secondary">#725187</color>
+    <color name="Tertiary">#8a4a65</color>
+    <color name="Error">#ba1a1a</color>
+
+    <color name="onPrimary">#ffffff</color>
+    <color name="onSecondary">#ffffff</color>
+    <color name="onTertiary">#ffffff</color>
+    <color name="onError">#ffffff</color>
+
+    <color name="PrimaryContainer">#f2daff</color>
+    <color name="SecondaryContainer">#f4daff</color>
+    <color name="TertiaryContainer">#ffd9e5</color>
+    <color name="ErrorContainer">#ffdad6</color>
+
+    <color name="onPrimaryContainer">#583a6f</color>
+    <color name="onSecondaryContainer">#59396e</color>
+    <color name="onTertiaryContainer">#6e334d</color>
+    <color name="onErrorContainer">#93000a</color>
+
+    <color name="surfaceDim">#e0d8df</color>
+    <color name="surface">#fff7fd</color>
+    <color name="surfaceBright">#fff7fd</color>
+
+    <color name="surfaceInverse">#332f35</color>
+    <color name="onSurfaceInverse">#f7eef6</color>
+    <color name="primaryInverse">#ddb9f7</color>
+
+    <color name="surfaceContainerLowest">#ffffff</color>
+    <color name="surfaceContainerLow">#faf1f9</color>
+    <color name="surfaceContainer">#f4ebf3</color>
+    <color name="surfaceContainerHigh">#eee6ed</color>
+    <color name="surfaceContainerHighest">#e8e0e8</color>
+
+    <color name="onSurface">#1e1a20</color>
+    <color name="onSurfaceVariant">#4b454d</color>
+    <color name="outline">#7c757e</color>
+    <color name="outlineVariant">#cdc3ce</color>
+
+    <color name="scrim">#000000</color>
+    <color name="shadow">#000000</color>
 </resources>

@@ -9,8 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/viewBebidasAlcoholicas"
         android:layout_width="match_parent"
-        tools:background ="@color/orange_2"
-        android:layout_height="500dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.Guideline
@@ -49,8 +48,6 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_agregar_bebida"
             app:fabSize="mini"
-            app:backgroundTint="@color/blue"
-            app:tint="@color/white"
             app:layout_constraintTop_toTopOf="@id/textBebidasAlcoholicas"
             app:layout_constraintBottom_toBottomOf="@id/textBebidasAlcoholicas"
             app:layout_constraintStart_toEndOf="@id/textBebidasAlcoholicas"
@@ -60,8 +57,7 @@
             android:id="@+id/recyclerBebidasAlcoholicas"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:text="@string/sin_bebidas"
-
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textBebidasAlcoholicas"
@@ -77,7 +73,7 @@
             android:layout_height="wrap_content"
             android:text="@string/sin_bebidas"
             android:textSize="25sp"
-            android:visibility="gone"
+            android:visibility="visible"
             android:gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/textBebidasAlcoholicas"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,55 +89,71 @@
             android:text="@string/tiempo_desde_primera_bebida"
             android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/editHorasPrimeraBebida"
-            app:layout_constraintTop_toTopOf="@id/editHorasPrimeraBebida"
-            app:layout_constraintBottom_toBottomOf="@id/editHorasPrimeraBebida" />
+            app:layout_constraintEnd_toStartOf="@id/textInputHorasPrimeraBebida"
+            app:layout_constraintTop_toTopOf="@id/textInputHorasPrimeraBebida"
+            app:layout_constraintBottom_toBottomOf="@id/textInputHorasPrimeraBebida" />
 
-        <EditText
-            android:id="@+id/editHorasPrimeraBebida"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputHorasPrimeraBebida"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="3 horas"
-            android:gravity="center"
-            android:background="@color/white"
-            app:layout_constraintStart_toEndOf="@id/textTiempoDesdePrimeraBebida"
-            app:layout_constraintEnd_toStartOf="@id/editMinutosPrimeraBebida"
+            app:suffixText="@string/horas"
+            app:boxBackgroundMode="filled"
+            app:layout_constraintStart_toStartOf="@id/textTiempoDesdePrimeraBebida"
+            app:layout_constraintEnd_toEndOf="@id/textInputMinutosPrimeraBebida"
             app:layout_constraintTop_toBottomOf="@id/guidelineRecyclerView"
-            app:layout_constraintBottom_toTopOf="@id/buttonCalcular" />
+            app:layout_constraintBottom_toTopOf="@id/buttonCalcular"
+            app:expandedHintEnabled="false">
 
-        <EditText
-            android:id="@+id/editMinutosPrimeraBebida"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editHorasPrimeraBebida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cero"
+                android:textSize="18sp"
+                android:inputType="number"
+                android:selectAllOnFocus="true"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputMinutosPrimeraBebida"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="0 minutos"
-            android:gravity="center"
-            android:background="@color/white"
-            app:layout_constraintStart_toEndOf="@id/editHorasPrimeraBebida"
+            app:suffixText="@string/minutos"
+            app:boxBackgroundMode="filled"
+            app:layout_constraintStart_toEndOf="@id/textInputHorasPrimeraBebida"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/editHorasPrimeraBebida"
-            app:layout_constraintBottom_toBottomOf="@id/editHorasPrimeraBebida" />
+            app:layout_constraintTop_toTopOf="@id/textInputHorasPrimeraBebida"
+            app:layout_constraintBottom_toBottomOf="@id/textInputHorasPrimeraBebida"
+            app:expandedHintEnabled="false">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editMinutosPrimeraBebida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cero"
+                android:textSize="18sp"
+                android:inputType="number"
+                android:selectAllOnFocus="true"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/buttonCalcular"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:text="@string/calcular"
-            app:backgroundTint="@color/blue"
-            app:tint="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editHorasPrimeraBebida"
-            app:layout_constraintBottom_toBottomOf="@id/viewBebidasAlcoholicas"/>
+            app:layout_constraintTop_toBottomOf="@id/textInputHorasPrimeraBebida"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/viewResultados"
         android:layout_width="match_parent"
-        tools:background ="@color/blue"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/viewBebidasAlcoholicas"
         app:layout_constraintBottom_toBottomOf="parent">

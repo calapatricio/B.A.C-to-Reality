@@ -4,6 +4,9 @@
     <string name="bebidas_alcoholicas">Bebidas alcohólicas</string>
     <string name="sin_bebidas">No hay bebidas añadidas aún</string>
     <string name="tiempo_desde_primera_bebida">Tiempo desde la primera bebida</string>
+    <string name="cero">0</string>
+    <string name="horas">Horas</string>
+    <string name="minutos">Minutos</string>
     <string name="gramos_por_litro">g/L en sangre actual</string>
     <string name="miligramos_por_litro_aire">mg/L en aire expirado actual</string>
     <string name="bac">BAC actual</string>
